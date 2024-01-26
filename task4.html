@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сумма предыдущих элементов массива</title>
+    <script>
+        function calculateCumulativeSum(array, index = 0, cumulativeSum = 0) {
+            if (index === array.length) {
+                return [];
+            }
+
+            cumulativeSum += array[index];
+            const currentSum = cumulativeSum;
+            const remainingSums = calculateCumulativeSum(array, index + 1, cumulativeSum);
+
+            return [currentSum, ...remainingSums];
+        }
+
+        window.onload = function () {
+            const numbers = [2, 3, 4, 5, 1, 0];
+            const cumulativeSums = calculateCumulativeSum(numbers);
+            document.getElementById('result').innerHTML = `[${cumulativeSums.join(', ')}]`;
+        };
+    </script>
+</head>
+<body>
+    <p id="result"></p>
+</body>
+</html>

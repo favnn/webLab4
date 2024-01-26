@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Фильтрация данных</title>
+    <script>
+        const data = [
+            { name: 'Tomas', color: 'Black', sex: 'M', age: 1 },
+            { name: 'Rodion', color: 'Green', sex: 'M', age: 4 },
+            { name: 'Samanta', color: 'Blue', sex: 'F', age: 3 },
+            { name: 'Katya', color: 'Orange', sex: 'F', age: 3 }
+        ];
+
+        function filterData(array, filterObject) {
+            return array.filter(item =>
+                Object.keys(filterObject).every(key => item[key] === filterObject[key])
+            );
+        }
+
+        window.onload = function () {
+            const filterParams = { color: 'Blue', sex: 'F' };
+            const filteredData = filterData(data, filterParams);
+            
+            const resultElement = document.getElementById('result');
+            resultElement.innerHTML = `Отфильтрованные данные: ${JSON.stringify(filteredData)}`;
+        };
+    </script>
+</head>
+<body>
+    <p id="result"></p>
+</body>
+</html>

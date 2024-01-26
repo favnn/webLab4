@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Функция форматирования данных сотрудников</title>
+  <script>
+    function formatEmployees(employees) {
+      return employees.map(employee => `Имя: ${employee.name}, возраст: ${employee.age}`);
+    }
+
+    function showFormattedEmployees() {
+      const employees = [
+        { name: 'Иван', age: 23 },
+        { name: 'Мария', age: 30 },
+        { name: 'Петр', age: 14 }
+      ];
+
+      const formattedEmployees = formatEmployees(employees);
+      const resultElement = document.getElementById('result');
+      resultElement.textContent = formattedEmployees.join('\n');
+    }
+  </script>
+</head>
+<body>
+
+<button onclick="showFormattedEmployees()">Показать отформатированных сотрудников</button>
+<pre id="result"></pre>
+
+</body>
+</html>
